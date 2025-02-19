@@ -10,7 +10,7 @@
   "license": "ISC",
   "type": "commonjs",
   "description": "",
-  "dependencies": {
-    "cypress": "^13.17.0"
+  "devDependencies": {
+    "cypress": "^14.0.3"
   }
 }
