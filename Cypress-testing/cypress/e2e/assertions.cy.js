@@ -1,9 +1,12 @@
 import ShouldBePage from "../page-objects/should-be";
 import ShouldHavePage from "../page-objects/should-have";
+import ShouldMatchPage from "../page-objects/should-match";
 
-describe('template spec', () => {
+describe('Assertions test', () => {
   const shouldBePage = new ShouldBePage();
   const shouldHavePage = new ShouldHavePage();
+  const shouldMatchPage = new ShouldMatchPage();
+
   before('Visit Website', () => {
     cy.visit('https://practice.expandtesting.com/assertions/should-be')
   })
@@ -32,8 +35,14 @@ describe('template spec', () => {
     shouldHavePage.cssDiv.should('have.css', 'color', 'rgb(0, 0, 0)')
         .should('have.css', 'background-color', 'rgb(77, 148, 255)'); // pozna iba RGB farby
 
-    shouldHavePage.lengthUl.should('have.length', 3);
+    shouldHavePage.lengthUl.should('have.length', 1);
 
     shouldHavePage.valueInput.should('have.value', 'first name');
+  })
+
+  it('"Should MATCH" assertions', () => {
+    cy.visit('https://practice.expandtesting.com/assertions/should-match');
+
+    shouldMatchPage.matchInput.invoke('text').should('match', /^[A-Z][a-zA-Z0-9\s]*\.\.\.$/);
   })
 })
