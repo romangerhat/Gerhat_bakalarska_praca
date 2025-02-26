@@ -1,29 +1,8 @@
 import PasswordPage from "../page-objects/password";
+import passwords from '../fixtures/passwords.json'
 
 describe('Common website elements', () => {
     const passwordPage = new PasswordPage();
-    const passwords = {
-        shortPassword: {
-            value: 'abc',
-            validatorsActive: ['lenghtValidator', 'uppercaseValidator', 'specialValidator'],
-            validatorsNonActive: ['lowercaseValidator'],
-        },
-        specialCharPassword: {
-            value: 'abc!',
-            validatorsActive: ['lenghtValidator', 'uppercaseValidator'],
-            validatorsNonActive: ['lowercaseValidator', 'specialValidator'],
-        },
-        upperCasePassword: {
-            value: 'ABC',
-            validatorsActive: ['lenghtValidator', 'lowercaseValidator', 'specialValidator'],
-            validatorsNonActive: ['uppercaseValidator'],
-        },
-        correctPassword: {
-            value: 'Abcdefgh!',
-            validatorsActive: [],
-            validatorsNonActive: ['uppercaseValidator', 'lenghtValidator', 'lowercaseValidator', 'specialValidator'],
-        }
-    };
 
     before('Visit Website', () => {
         cy.visit('https://practice.expandtesting.com/secure-password-checker');
