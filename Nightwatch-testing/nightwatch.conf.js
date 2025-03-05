@@ -27,10 +27,10 @@ module.exports = {
 
   // See https://nightwatchjs.org/guide/extending-nightwatch/adding-plugins.html
   plugins: [],
-  
+
   // See https://nightwatchjs.org/guide/concepts/test-globals.html
   globals_path: '',
-  
+
   webdriver: {},
 
   test_workers: {
@@ -40,7 +40,7 @@ module.exports = {
   test_settings: {
     default: {
       disable_error_log: false,
-      launch_url: 'http://uitestingplayground.com/home',
+      launch_url: 'http://localhost',
 
       screenshots: {
         enabled: false,
@@ -51,14 +51,14 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'chrome'
       },
-      
+
       webdriver: {
         start_process: true,
         server_path: ''
       },
-      
+
     },
-    
+
     firefox: {
       desiredCapabilities: {
         browserName: 'firefox',
@@ -81,17 +81,14 @@ module.exports = {
         ]
       }
     },
-    
+
     chrome: {
       desiredCapabilities: {
         browserName: 'chrome',
-        'goog:chromeOptions': {
-          // More info on Chromedriver: https://sites.google.com/a/chromium.org/chromedriver/
+        chromeOptions: {
           args: [
-            //'--no-sandbox',
-            //'--ignore-certificate-errors',
-            //'--allow-insecure-localhost',
-            //'--headless=new'
+            '--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data', // Your Chrome profile directory
+            '--profile-directory=Default' // Use your "Default" profile
           ]
         }
       },
@@ -104,7 +101,7 @@ module.exports = {
         ]
       }
     },
-    
+
     edge: {
       desiredCapabilities: {
         browserName: 'MicrosoftEdge',
@@ -124,13 +121,13 @@ module.exports = {
         ]
       }
     },
-    
+
   },
-  
+
   usage_analytics: {
     enabled: true,
     log_path: './logs/analytics',
-    client_id: 'c114e984-2321-4b4d-b419-d4e4850d6b1a'
+    client_id: '780e3fa2-bbc0-4ea1-96b9-9164ccb7167f'
   }
-  
+
 };
