@@ -11,6 +11,7 @@ module.exports = {
     'Password Validator': function (browser) {
         const passwordPage = browser.page.password();
         const passwordKeys = Object.keys(passwords);
+        browser.pause(600000);
 
         passwordKeys.forEach((key) => {
             const { value, validatorsActive, validatorsNonActive } = passwords[key];

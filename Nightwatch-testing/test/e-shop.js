@@ -45,14 +45,14 @@ module.exports = {
         browser.waitForElementNotPresent(`a[href="/bookstore/add-to-cart/${books.jSbook}"]`);
         browser.pause(2000);
         browser.click(`a[href="/bookstore/add-to-cart/${books.devOpsBook}"]`);
-        // browser.assert.containsText(eShopPage.elements.shoppingCartBadge, '1')
+        browser.assert.containsText(eShopPage.elements.shoppingCartBadge, '1')
         browser.element(eShopPage.elements.searchInput).clear();
         browser.setValue(eShopPage.elements.searchInput, 'Agile');
         browser.click(eShopPage.elements.searchButton);
         browser.waitForElementNotPresent(`a[href="/bookstore/add-to-cart/${books.devOpsBook}"]`);
         browser.waitForElementNotPresent(`a[href="/bookstore/add-to-cart/${books.jSbook}"]`);
         browser.click(`a[href="/bookstore/add-to-cart/${books.agileBook}"]`);
-        // browser.assert.containsText(eShopPage.elements.shoppingCartBadge, '2')
+        browser.assert.containsText(eShopPage.elements.shoppingCartBadge, '2')
     },
 
     'Shopping cart actions': function (browser) {
@@ -63,28 +63,25 @@ module.exports = {
         browser.setValue(
             'input[name="idPro"][value="67410b8c6cb6226060a20da4"] + input[name="cartQty"]',
             '3'
-        ); // zmenim pocet na 3
+        );
         browser.click('input[name="idPro"][value="67410b8c6cb6226060a20da4"] ~ button[type="submit"]'); // ulozim zmeny
         browser.assert.containsText(eShopPage.elements.totalPrice, (devOpsBookPrice*3).toString());
         browser.click(eShopPage.elements.bookStore);
     },
 
     'Return to store and add more books to the cart': function (browser) {
-
-        //browser.expect.element('@shoppingCartBadge').text.to.equal('3');
         browser.click(`a[href="/bookstore/add-to-cart/${books.jSbook}"]`);
-        //browser.expect.element('@shoppingCartBadge').text.to.equal('4');
+        // browser.expect.element('@shoppingCartBadge').text.to.equal('4');
     },
 
     'Check cart and proceed to checkout': function (browser) {
-        /*
         browser.click(eShopPage.elements.shoppingCart);
-        //browser.expect.element('@shoppingCartBadge').text.to.equal('4');
+        // browser.expect.element('@shoppingCartBadge').text.to.equal('4');
         browser.assert.containsText(eShopPage.elements.totalPrice, parseInt(devOpsBookPrice)*3  + parseInt(jSBookPrice));
         browser.click(eShopPage.elements.checkout);
         browser.waitForElementVisible(eShopPage.elements.emailField);
         browser.waitForElementVisible(eShopPage.elements.passwordField);
 
-        browser.end(); */
+        browser.end();
     }
 };

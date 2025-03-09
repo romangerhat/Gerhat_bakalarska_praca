@@ -40,7 +40,7 @@ module.exports = {
             browser.execute(function(color) {
                 return document.querySelector('#target').querySelector(`.${color}`) !== null;
             }, [color], function(result) {
-                browser.assert.ok(result.value, `${color} circle is inside #target`);
+                browser.assert.ok(result.value, `${color} circle is inside #target`); // tu este nieco pokazit
             });
         }
 
@@ -53,7 +53,7 @@ module.exports = {
 
     'Upload file': function (browser) {
         browser.url('https://practice.expandtesting.com/upload')
-        browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('../public/test.txt'))
+        browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('../public/tst.txt')) // zly subor
         browser.click(fileUploadPage.elements.fileSubmit);
     },
 
@@ -71,7 +71,7 @@ module.exports = {
     'Long wait': function (browser) {
         browser
             .url('https://practice.expandtesting.com/slow')
-            .waitForElementVisible('.alert', 60000);
+            .waitForElementVisible('.alert', 10000); // kratky cas
     },
 
     'Dropdown': function (browser) {

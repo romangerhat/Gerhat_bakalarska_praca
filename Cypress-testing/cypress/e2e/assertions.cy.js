@@ -35,7 +35,7 @@ describe('Assertions test', () => {
     shouldHavePage.cssDiv.should('have.css', 'color', 'rgb(0, 0, 0)')
         .should('have.css', 'background-color', 'rgb(77, 148, 255)'); // pozna iba RGB farby
 
-    shouldHavePage.lengthUl.should('have.length', 1);
+    shouldHavePage.lengthUl.should('have.length', 1); //
 
     shouldHavePage.valueInput.should('have.value', 'first name');
   })
