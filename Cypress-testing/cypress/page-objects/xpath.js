@@ -43,6 +43,14 @@ class XPathPage {
         return cy.xpath('//*[@id="result"]');
     }
 
+    get simpleDropdown() {
+        return cy.xpath('//*[@id="dropdown"]');
+    }
+
+    get countryDropdown() {
+        return cy.xpath('//*[@id="country"]');
+    }
+
 
 }
 

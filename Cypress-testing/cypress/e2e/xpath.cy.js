@@ -62,4 +62,16 @@ describe('Common website elements using Xpath locators', () => {
         cy.get('.alert', { timeout: 60000 }).should('be.visible');
     })
 
+    it('Dropdown', () => {
+        cy.visit('https://practice.expandtesting.com/dropdown');
+        xPathPage.simpleDropdown
+                .find('option')
+                .and('contain', 'Option 1')
+                .and('contain', 'Option 2');
+
+        xPathPage.countryDropdown.select('Slovakia');
+        });
+
+
+
 })

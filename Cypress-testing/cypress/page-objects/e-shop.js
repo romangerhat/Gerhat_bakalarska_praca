@@ -50,14 +50,14 @@ class EShopPage {
 
     cardQuantity(id) {
         return cy.get(`input[name="idPro"][value="${id}"]`)
-            .parent() // Move to the parent container
-            .find('input[name="cartQty"]'); // Select the quantity input
+            .parent()
+            .find('input[name="cartQty"]');
     }
 
     updateQuantityButton(id) {
         return cy.get(`input[name="idPro"][value="${id}"]`)
-            .parent() // Move to the parent container
-            .find('button[type="submit"]'); // Select the submit button
+            .parent()
+            .find('button[type="submit"]');
     }
 
 

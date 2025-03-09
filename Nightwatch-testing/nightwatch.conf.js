@@ -87,8 +87,8 @@ module.exports = {
         browserName: 'chrome',
         chromeOptions: {
           args: [
-            '--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data', // Your Chrome profile directory
-            '--profile-directory=Default' // Use your "Default" profile
+            '--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data',
+            '--profile-directory=Default'
           ]
         }
       },

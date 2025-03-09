@@ -24,14 +24,6 @@ class ShouldBePage {
         return cy.get('#div2');
     }
 
-    get visibleButton() {
-        return cy.get('#btn1');
-    }
-
-    get invisibleButton() {
-        return cy.get('#btn2');
-    }
-
     get enabledButton() {
         return cy.get('#btn3');
     }

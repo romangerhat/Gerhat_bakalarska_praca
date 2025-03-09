@@ -71,12 +71,13 @@ module.exports = {
             .waitForElementVisible('//*[@id="result"]/p', 60000);
     },
 
-    /* 'Dropdown': function (browser) {
+    'Dropdown': function (browser) {
         browser.url('https://practice.expandtesting.com/dropdown');
         browser.assert.containsText(xPathPage.elements.simpleDropdown, 'Option 1');
         browser.assert.containsText(xPathPage.elements.simpleDropdown, 'Option 2');
         browser.setValue(xPathPage.elements.countryDropdown, 'Slovakia');
-    }, */ // NIEJE HOTOVY ANI V CYPRESS
+    },
+
 
     after: function (browser) {
         browser.end();
