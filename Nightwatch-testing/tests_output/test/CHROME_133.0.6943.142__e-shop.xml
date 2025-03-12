@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites errors="0"
-            failures="1"
-            tests="3">
+            failures="0"
+            tests="5">
 
   <testsuite name="test.e-shop"
-    errors="0" failures="1" hostname="" id="" package="e-shop" skipped="2"
-    tests="3" time="67.51" timestamp="">
+    errors="0" failures="0" hostname="" id="" package="e-shop" skipped="0"
+    tests="5" time="44.80" timestamp="">
   
-    <testcase name="Get Book Prices" classname="test.e-shop" time="0.1320" assertions="0">
+    <testcase name="Get Book Prices" classname="test.e-shop" time="0.1470" assertions="0">
     </testcase>
   
-    <testcase name="Search books and add them to the cart" classname="test.e-shop" time="22.14" assertions="4">
+    <testcase name="Search books and add them to the cart" classname="test.e-shop" time="10.53" assertions="6">
+
+    
+
+    
 
     
 
@@ -21,7 +25,21 @@
     
     </testcase>
   
-    <testcase name="Shopping cart actions" classname="test.e-shop" time="9.569" assertions="1">  <failure message="Testing if element &lt;.text-danger&gt; contains text &#39;NaN&#39; in 5000ms - expected &#34;contains text &#39;NaN&#39;&#34; but got: &#34;does not contain &#39;NaN&#39;&#34; (5112ms)">    at Shopping cart actions (C:\Users\gerha\WebstormProjects\Testing\Nightwatch-testing\test\e-shop.js:60:24)</failure>
+    <testcase name="Shopping cart actions" classname="test.e-shop" time="5.419" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Return to store and add more books to the cart" classname="test.e-shop" time="2.481" assertions="0">
+    </testcase>
+  
+    <testcase name="Check cart and proceed to checkout" classname="test.e-shop" time="2.834" assertions="3">
+
+    
+
+    
 
     
     </testcase>
@@ -31,18 +49,6 @@
 
     
 
-  
-    
-    <testcase
-      name="Return to store and add more books to the cart" classname="test.e-shop">
-      <skipped />
-    </testcase>
-    
-    <testcase
-      name="Check cart and proceed to checkout" classname="test.e-shop">
-      <skipped />
-    </testcase>
-    
   
   </testsuite>
 </testsuites>

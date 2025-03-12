@@ -54,17 +54,6 @@ module.exports = {
         browser.useXpath().click(xPathPage.elements.fileSubmit);
     },
 
-    /* 'Autocomplete': function (browser) {
-        browser.url('https://practice.expandtesting.com/autocomplete');
-        browser.pause(60000); // Wait for 60 seconds
-        browser.setValue(xPathPage.elements.inputField, 'slova');
-        browser.keys(browser.Keys.DOWN_ARROW);
-        browser.keys(browser.Keys.ENTER);
-        browser.click(xPathPage.elements.submit);
-        browser.assert.containsText(xPathPage.elements.result, 'You selected: Slovakia');
-
-    }, */
-
     'Long wait': function (browser) {
         browser
             .url('https://practice.expandtesting.com/slow')

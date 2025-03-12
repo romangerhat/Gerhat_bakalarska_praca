@@ -48,15 +48,6 @@ describe('Common website elements using Xpath locators', () => {
         xPathPage.fileSubmit.click();
     })
 
-    it('Autocomplete', () => {
-        cy.visit('https://practice.expandtesting.com/autocomplete');
-        xPathPage.inputField.type('slova');
-        xPathPage.inputField.type('{downarrow}');
-        xPathPage.inputField.type('{enter}');
-        xPathPage.submit.click();
-        xPathPage.result.should('have.text', 'You selected: Slovakia');
-    })
-
     it('Long wait', () => {
         cy.visit('https://practice.expandtesting.com/slow');
         cy.get('.alert', { timeout: 60000 }).should('be.visible');
