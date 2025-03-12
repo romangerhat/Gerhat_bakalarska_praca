@@ -1,6 +1,5 @@
 const dragAndDropPage = require('../nightwatch/page-objects/drag-and-drop');
 const fileUploadPage = require('../nightwatch/page-objects/file-upload');
-const autoCompletePage = require('../nightwatch/page-objects/autocomplete');
 const dropDownPage = require('../nightwatch/page-objects/dropdown');
 
 module.exports = {
@@ -56,17 +55,6 @@ module.exports = {
         browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('../public/tst.txt')) // zly subor
         browser.click(fileUploadPage.elements.fileSubmit);
     },
-
-    /* 'Autocomplete': function (browser) {
-        browser.url('https://practice.expandtesting.com/autocomplete');
-        browser.pause(60000); // Wait for 60 seconds
-        browser.setValue(autoCompletePage.elements.inputField, 'slova');
-        browser.keys(browser.Keys.DOWN_ARROW);
-        browser.keys(browser.Keys.ENTER);
-        browser.click(autoCompletePage.elements.submit);
-        browser.assert.containsText(autoCompletePage.elements.result, 'You selected: Slovakia');
-
-    }, */
 
     'Long wait': function (browser) {
         browser

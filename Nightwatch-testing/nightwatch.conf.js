@@ -106,22 +106,20 @@ module.exports = {
       desiredCapabilities: {
         browserName: 'MicrosoftEdge',
         'ms:edgeOptions': {
-          // More info on EdgeDriver: https://docs.microsoft.com/en-us/microsoft-edge/webdriver-chromium/capabilities-edge-options
           args: [
-            //'--headless=new'
-          ]
+            '--user-data-dir=C:\\Users\\gerha\\AppData\\Local\\Microsoft\\Edge\\User Data',
+            '--profile-directory=Default'
+          ],
+          // excludeSwitches: ['enable-automation']
         }
       },
-
       webdriver: {
         start_process: true,
         server_path: '',
-        cli_args: [
-          // --verbose
-        ]
+        cli_args: [],
+        log_path: './logs'
       }
-    },
-
+    }
   },
 
   usage_analytics: {

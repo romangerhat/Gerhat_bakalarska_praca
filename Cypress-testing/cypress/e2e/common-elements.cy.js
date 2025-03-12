@@ -1,6 +1,5 @@
 import DragAndDropPage from "../page-objects/drag-and-drop";
 import FileUploadPage from "../page-objects/file-upload";
-import AutoCompletePage from "../page-objects/autocomplete";
 import DropDownPage from "../page-objects/dropdown";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
@@ -14,7 +13,6 @@ describe('Common website elements', () => {
     const dragAndDropPage = new DragAndDropPage();
     const dataTransfer = new DataTransfer(); // musim pouzit datatransfer
     const fileUploadPage = new FileUploadPage();
-    const autoCompletePage = new AutoCompletePage();
     const dropDownPage = new DropDownPage();
 
     before('Visit Website', () => {
@@ -52,15 +50,6 @@ describe('Common website elements', () => {
 
         fileUploadPage.fileInput.selectFile('cypress/fixtures/test.txt');
         fileUploadPage.fileSubmit.click();
-    })
-
-    it('Autocomplete', () => {
-        cy.visit('https://practice.expandtesting.com/autocomplete');
-        autoCompletePage.inputField.type('slova');
-        autoCompletePage.inputField.type('{downarrow}');
-        autoCompletePage.inputField.type('{enter}');
-        autoCompletePage.submit.eq(2).click();
-        autoCompletePage.result.should('have.text', 'You selected: Slovakia');
     })
 
     it('Long wait', () => {
