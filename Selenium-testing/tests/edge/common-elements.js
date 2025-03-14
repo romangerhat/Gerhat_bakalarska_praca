@@ -1,30 +1,27 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
+const { Builder, By, until } = require('selenium-webdriver');
+const { Options } = require('selenium-webdriver/edge');
 const DragAndDropPage = require('../../page-objects/drag-and-drop');
 const FileUploadPage = require('../../page-objects/file-upload');
-const AutoCompletePage = require('../../page-objects/autocomplete');
 const DropDownPage = require('../../page-objects/dropdown');
-const chrome = require("selenium-webdriver/chrome");
-require('chromedriver');
+require('edgedriver');
 
 describe('Common website elements', function () {
     let driver;
     let dragAndDropPage;
     let fileUploadPage;
-    let autoCompletePage;
     let dropDownPage;
 
     before(async function () {
-        let options = new chrome.Options();
-        options.addArguments('--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data');
+        let options = new Options();
+        options.addArguments('--user-data-dir=C:\\Users\\gerha\\AppData\\Local\\Microsoft\\Edge\\User Data');
         options.addArguments('--profile-directory=Default');
 
         driver = await new Builder()
-            .forBrowser('chrome')
-            .setChromeOptions(options)
+            .forBrowser('MicrosoftEdge')
+            .setEdgeOptions(options)
             .build();
         dragAndDropPage = new DragAndDropPage(driver);
         fileUploadPage = new FileUploadPage(driver);
-        autoCompletePage = new AutoCompletePage(driver);
         dropDownPage = new DropDownPage(driver);
     });
 
@@ -56,7 +53,7 @@ describe('Common website elements', function () {
         await driver.get('https://practice.expandtesting.com/upload');
 
         // Get the absolute path using the relative path
-        const filePath = path.resolve(__dirname, '../test-files/test.txt');  // Adjust path as needed
+        const filePath = path.resolve(__dirname, '../../test-files/test.txt');  // Adjust path as needed
 
         const fileInput = await fileUploadPage.fileInput;
         const fileSubmit = await fileUploadPage.fileSubmit;
@@ -75,28 +72,6 @@ describe('Common website elements', function () {
             throw new Error('File upload failed');
         }
     });
-
-
-    /* it('Autocomplete', async function () {
-        await driver.get('https://practice.expandtesting.com/autocomplete');
-        const inputField = await autoCompletePage.inputField;
-        const submitButton = await autoCompletePage.submit;
-
-        await inputField.sendKeys('slova');
-        await inputField.sendKeys(Key.ARROW_DOWN);
-        await inputField.sendKeys(Key.ENTER);
-
-        await submitButton.click();
-
-        const result = await autoCompletePage.result;
-        const resultText = await result.getText();
-
-        if (resultText.includes('Slovakia')) {
-            console.log('Autocomplete successful');
-        } else {
-            throw new Error('Autocomplete failed');
-        }
-    }); */
 
     it('Long wait', async function () {
         await driver.get('https://practice.expandtesting.com/slow');

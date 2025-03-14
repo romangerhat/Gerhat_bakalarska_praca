@@ -11,6 +11,6 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
-    "nightwatch": "^3.11.1"
+    "nightwatch": "^3.12.0"
   }
 }

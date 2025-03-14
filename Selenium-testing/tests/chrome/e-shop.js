@@ -42,7 +42,6 @@ describe('Dynamic e-shop test', function () {
         await eShopPage.searchInput.sendKeys('DevOps');
         await eShopPage.searchButton.click();
 
-        // Scroll into view before clicking
         const devOpsBookElement = await eShopPage.addBookToCart(devOpsBook);
         await driver.executeScript("arguments[0].scrollIntoView();", devOpsBookElement);
         await driver.sleep(2000);
@@ -58,7 +57,6 @@ describe('Dynamic e-shop test', function () {
 
         await driver.sleep(2000);
 
-        // Scroll into view before clicking
         const agileBookElement = await eShopPage.addBookToCart(agileBook);
         await driver.executeScript("arguments[0].scrollIntoView();", agileBookElement);
         await driver.sleep(2000);
@@ -105,7 +103,6 @@ describe('Dynamic e-shop test', function () {
         const badgeText4 = await shoppingCartBadge4.getText();
         if (badgeText4 !== '3') throw new Error('Shopping cart badge does not contain "3"');
 
-        // Scroll into view before clicking
         const jsBookElement = await eShopPage.addBookToCart(jSbook);
         await driver.executeScript("arguments[0].scrollIntoView();", jsBookElement);
         await driver.sleep(2000);

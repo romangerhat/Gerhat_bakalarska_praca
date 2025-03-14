@@ -1,23 +1,24 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const XPathPage = require('../../page-objects/xpath');
-const chrome = require("selenium-webdriver/chrome");
-require('chromedriver');
+const { Options } = require('selenium-webdriver/edge');
+require('edgedriver');
+
 
 describe('Common website elements', function () {
     let driver;
     let xpathPage;
 
     before(async function () {
-        let options = new chrome.Options();
-        options.addArguments('--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data');
+        let options = new Options();
+        options.addArguments('--user-data-dir=C:\\Users\\gerha\\AppData\\Local\\Microsoft\\Edge\\User Data');
         options.addArguments('--profile-directory=Default');
 
         driver = await new Builder()
-            .forBrowser('chrome')
-            .setChromeOptions(options)
+            .forBrowser('MicrosoftEdge')
+            .setEdgeOptions(options)
             .build();
 
-        xpathPage = new XPathPage(driver); // Initialize XPathPage object
+        xpathPage = new XPathPage(driver);
     });
 
     it('Drag & Drop', async function () {
@@ -48,7 +49,7 @@ describe('Common website elements', function () {
     it('Upload file', async function () {
         await driver.get('https://practice.expandtesting.com/upload');
 
-        const filePath = path.resolve(__dirname, '../test-files/test.txt');
+        const filePath = path.resolve(__dirname, '../../test-files/test.txt');
 
         const fileInput = await xpathPage.fileInput;
         const fileSubmit = await xpathPage.fileSubmit;
@@ -83,7 +84,6 @@ describe('Common website elements', function () {
         const simpleDropdown = await xpathPage.simpleDropdown;
         const countryDropdown = await xpathPage.countryDropdown;
 
-        // Check the options for the simple dropdown
         const options = await simpleDropdown.findElements(By.xpath('.//option'));
         const optionTexts = await Promise.all(options.map(option => option.getText()));
 
@@ -93,7 +93,6 @@ describe('Common website elements', function () {
             throw new Error('Dropdown options mismatch');
         }
 
-        // Select a country from the country dropdown
         await countryDropdown.sendKeys('Slovakia');
     });
 

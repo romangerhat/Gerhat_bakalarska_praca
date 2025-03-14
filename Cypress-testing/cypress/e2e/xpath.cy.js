@@ -2,14 +2,14 @@ import XPathPage from "../page-objects/xpath";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes('Assignment to constant variable')) {
-        return false;  // Prevent the test from failing
+        return false;
     }
-    return true;  // Let Cypress handle other errors
+    return true;
 });
 
 describe('Common website elements using Xpath locators', () => {
     const xPathPage = new XPathPage();
-    const dataTransfer = new DataTransfer(); // musim pouzit datatransfer
+    const dataTransfer = new DataTransfer();
 
     before('Visit Website', () => {
         cy.visit('https://practice.expandtesting.com/drag-and-drop-circles')
@@ -20,7 +20,7 @@ describe('Common website elements using Xpath locators', () => {
         xPathPage.dropTarget.trigger('drop', { dataTransfer });
 
         xPathPage.dropTarget.within(() => {
-            xPathPage.redCircle.should('exist'); // neviem ci funguje spravne
+            xPathPage.redCircle.should('exist');
         });
 
         xPathPage.blueCircle.trigger('dragstart', { dataTransfer });

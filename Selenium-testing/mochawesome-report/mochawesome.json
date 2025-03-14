@@ -1,23 +1,188 @@
 {
   "stats": {
-    "suites": 0,
-    "tests": 0,
-    "passes": 0,
+    "suites": 1,
+    "tests": 4,
+    "passes": 1,
     "pending": 0,
-    "failures": 0,
-    "start": "2025-03-11T19:40:07.335Z",
-    "end": "2025-03-11T19:40:07.337Z",
-    "duration": 2,
-    "testsRegistered": 0,
-    "passPercent": null,
-    "pendingPercent": null,
+    "failures": 3,
+    "start": "2025-03-12T15:04:52.398Z",
+    "end": "2025-03-12T15:05:14.427Z",
+    "duration": 22029,
+    "testsRegistered": 4,
+    "passPercent": 25,
+    "pendingPercent": 0,
     "other": 0,
     "hasOther": false,
     "skipped": 0,
     "hasSkipped": false
   },
   "results": [
-    false
+    {
+      "uuid": "8d342943-583f-40de-a5c8-f966fe861e45",
+      "title": "",
+      "fullFile": "C:\\Users\\gerha\\WebstormProjects\\Testing\\Selenium-testing\\tests\\edge\\fail-common-elements.js",
+      "file": "\\tests\\edge\\fail-common-elements.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+          "title": "Common website elements",
+          "fullFile": "C:\\Users\\gerha\\WebstormProjects\\Testing\\Selenium-testing\\tests\\edge\\fail-common-elements.js",
+          "file": "\\tests\\edge\\fail-common-elements.js",
+          "beforeHooks": [
+            {
+              "title": "\"before all\" hook in \"Common website elements\"",
+              "fullTitle": "Common website elements \"before all\" hook in \"Common website elements\"",
+              "timedOut": false,
+              "duration": 2913,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "let options = new Options();\noptions.addArguments('--user-data-dir=C:\\\\Users\\\\gerha\\\\AppData\\\\Local\\\\Microsoft\\\\Edge\\\\User Data');\noptions.addArguments('--profile-directory=Default');\ndriver = await new Builder()\n    .forBrowser('MicrosoftEdge')  // Use Edge here\n    .setEdgeOptions(options)      // Set the Edge-specific options\n    .build();\ndragAndDropPage = new DragAndDropPage(driver);\nfileUploadPage = new FileUploadPage(driver);\ndropDownPage = new DropDownPage(driver);",
+              "err": {},
+              "uuid": "9ac28bbc-3567-4d49-b028-96c3297cccec",
+              "parentUUID": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [
+            {
+              "title": "\"after all\" hook in \"Common website elements\"",
+              "fullTitle": "Common website elements \"after all\" hook in \"Common website elements\"",
+              "timedOut": false,
+              "duration": 605,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.quit();",
+              "err": {},
+              "uuid": "a8dadf12-bac8-4535-a53a-af38d554f48a",
+              "parentUUID": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "tests": [
+            {
+              "title": "Drag & Drop",
+              "fullTitle": "Common website elements Drag & Drop",
+              "timedOut": false,
+              "duration": 5479,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get('https://practice.expandtesting.com/drag-and-drop-circles');\nconst { Actions, TouchActions } = require('selenium-webdriver');\nconst redCircle = await dragAndDropPage.redCircle;\nconst blueCircle = await dragAndDropPage.blueCircle;\nconst greenCircle = await dragAndDropPage.greenCircle;\nconst dropTarget = await dragAndDropPage.dropTarget;\nconst action = driver.actions({ async: true });\nawait action.dragAndDrop(redCircle, dropTarget).perform();\nawait dropTarget.findElement(By.css('.red')).then(() => console.log('Red circle dropped'));\nawait action.dragAndDrop(blueCircle, dropTarget).perform();\nawait dropTarget.findElement(By.css('.blue')).then(() => console.log('Blue circle dropped'));\nawait action.dragAndDrop(greenCircle, dropTarget).perform();\nawait dropTarget.findElement(By.css('.green')).then(() => console.log('Green circle dropped'));",
+              "err": {},
+              "uuid": "49c05f3d-0072-4c16-adf2-e66731ebf206",
+              "parentUUID": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Upload file",
+              "fullTitle": "Common website elements Upload file",
+              "timedOut": false,
+              "duration": 1018,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get('https://practice.expandtesting.com/upload');\nconst filePath = path.resolve(__dirname, '../../test-files/tst.txt');\nconst fileInput = await fileUploadPage.fileInput;\nconst fileSubmit = await fileUploadPage.fileSubmit;\n// Use sendKeys() with the absolute path\nawait fileInput.sendKeys(filePath);\nawait fileSubmit.click();\n// Check if the file has been uploaded\nconst uploadedFiles = await fileUploadPage.uploadedFiles;\nconst filesText = await uploadedFiles.getText();\nif (filesText.includes('test.txt')) {\n    console.log('File uploaded successfully');\n} else {\n    throw new Error('File upload failed');\n}",
+              "err": {
+                "message": "InvalidArgumentError: invalid argument: File not found : C:\\Users\\gerha\\WebstormProjects\\Testing\\Selenium-testing\\test-files\\tst.txt\n  (Session info: MicrosoftEdge=134.0.3124.51)",
+                "estack": "InvalidArgumentError: invalid argument: File not found : C:\\Users\\gerha\\WebstormProjects\\Testing\\Selenium-testing\\test-files\\tst.txt\n  (Session info: MicrosoftEdge=134.0.3124.51)\n    at Object.throwDecodedError (node_modules\\selenium-webdriver\\lib\\error.js:521:15)\n    at parseHttpResponse (node_modules\\selenium-webdriver\\lib\\http.js:524:13)\n    at Executor.execute (node_modules\\selenium-webdriver\\lib\\http.js:456:28)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)\n    at async Driver.execute (node_modules\\selenium-webdriver\\lib\\webdriver.js:745:17)\n    at async Context.<anonymous> (tests\\edge\\fail-common-elements.js:59:9)",
+                "diff": null
+              },
+              "uuid": "ac9ed815-9a52-4f8b-8857-b8080240b6f6",
+              "parentUUID": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Long wait",
+              "fullTitle": "Common website elements Long wait",
+              "timedOut": false,
+              "duration": 10894,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get('https://practice.expandtesting.com/slow');\nconst alert = await driver.wait(until.elementLocated(By.css('.alert')), 10000);\nif (alert) {\n    console.log('Alert is visible');\n} else {\n    throw new Error('Alert did not appear in time');\n}",
+              "err": {
+                "message": "TimeoutError: Waiting for element to be located By(css selector, .alert)\nWait timed out after 10041ms",
+                "estack": "TimeoutError: Waiting for element to be located By(css selector, .alert)\nWait timed out after 10041ms\n    at C:\\Users\\gerha\\WebstormProjects\\Testing\\Selenium-testing\\node_modules\\selenium-webdriver\\lib\\webdriver.js:929:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "5795626c-f4f7-44a3-88b6-a11297aec5b5",
+              "parentUUID": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Dropdown",
+              "fullTitle": "Common website elements Dropdown",
+              "timedOut": false,
+              "duration": 1100,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "await driver.get('https://practice.expandtesting.com/dropdown');\nconst simpleDropdown = await dropDownPage.simpleDropdown;\nconst countryDropdown = await dropDownPage.countryDropdown;\nconst options = await simpleDropdown.findElements(By.tagName('option'));\nconst optionTexts = await Promise.all(options.map(option => option.getText()));\nif (optionTexts.includes('Option 1') && optionTexts.includes('Option 3')) {\n    console.log('Dropdown options verified');\n} else {\n    throw new Error('Dropdown options mismatch');\n}\nawait countryDropdown.sendKeys('Slovakia');",
+              "err": {
+                "message": "Error: Dropdown options mismatch",
+                "estack": "Error: Dropdown options mismatch\n    at Context.<anonymous> (tests\\edge\\fail-common-elements.js:94:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)",
+                "diff": null
+              },
+              "uuid": "00cb589d-f05c-4bc1-abba-5a744f17e0c3",
+              "parentUUID": "2421de2f-ab8b-43ad-82a3-2b49dd17bac5",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "49c05f3d-0072-4c16-adf2-e66731ebf206"
+          ],
+          "failures": [
+            "ac9ed815-9a52-4f8b-8857-b8080240b6f6",
+            "5795626c-f4f7-44a3-88b6-a11297aec5b5",
+            "00cb589d-f05c-4bc1-abba-5a744f17e0c3"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 18491,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 60000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 60000
+    }
   ],
   "meta": {
     "mocha": {

@@ -15,10 +15,8 @@ module.exports = {
                 const element = document.querySelector(`.${color}`);
                 const dropTarget = document.querySelector('#target');
 
-                // Create DataTransfer object
                 const dataTransfer = new DataTransfer();
 
-                // Trigger dragstart event on the element
                 const dragStartEvent = new DragEvent('dragstart', {
                     bubbles: true,
                     cancelable: true,
@@ -26,7 +24,6 @@ module.exports = {
                 });
                 element.dispatchEvent(dragStartEvent);
 
-                // Trigger drop event on the target element
                 const dropEvent = new DragEvent('drop', {
                     bubbles: true,
                     cancelable: true,
@@ -35,19 +32,16 @@ module.exports = {
                 dropTarget.dispatchEvent(dropEvent);
             }, [color]);
 
-            // Verify that the element has been moved to the target
             browser.execute(function(color) {
-                return document.querySelector('#target').querySelector(`.${color}`) !== null;
+                return document.querySelector('#target').querySelector(`.${color}`) == null; // malo by byt !==
             }, [color], function(result) {
-                browser.assert.ok(result.value, `${color} circle is inside #target`); // tu este nieco pokazit
+                browser.assert.ok(result.value, `${color} circle is inside #target`);
             });
         }
 
-        // Perform drag and drop for each color and verify
         dragAndDrop('red');
         dragAndDrop('blue');
         dragAndDrop('green');
-
     },
 
     'Upload file': function (browser) {
@@ -66,7 +60,7 @@ module.exports = {
         browser
             .url('https://practice.expandtesting.com/dropdown')
             .assert.containsText(dropDownPage.elements.simpleDropdown, 'Option 1')
-            .assert.containsText(dropDownPage.elements.simpleDropdown, 'Option 2')
+            .assert.containsText(dropDownPage.elements.simpleDropdown, 'Option 3') // moznost neexistuje
             .setValue(dropDownPage.elements.countryDropdown, 'Slovakia');
     },
 

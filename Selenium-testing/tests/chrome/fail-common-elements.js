@@ -4,6 +4,7 @@ const FileUploadPage = require('../../page-objects/file-upload');
 const DropDownPage = require('../../page-objects/dropdown');
 const chrome = require("selenium-webdriver/chrome");
 require('chromedriver');
+const path = require("path");
 
 describe('Common website elements', function () {
     let driver;
@@ -27,7 +28,6 @@ describe('Common website elements', function () {
 
     it('Drag & Drop', async function () {
         await driver.get('https://practice.expandtesting.com/drag-and-drop-circles');
-
         const { Actions, TouchActions } = require('selenium-webdriver');
         const redCircle = await dragAndDropPage.redCircle;
         const blueCircle = await dragAndDropPage.blueCircle;
@@ -39,19 +39,26 @@ describe('Common website elements', function () {
         await action.dragAndDrop(redCircle, dropTarget).perform();
         await dropTarget.findElement(By.css('.red')).then(() => console.log('Red circle dropped'));
 
-        await action.dragAndDrop(blueCircle, dropTarget).perform();
-        await dropTarget.findElement(By.css('.blue')).then(() => console.log('Blue circle dropped'));
+        try {
+            await dropTarget.findElement(By.css('.blue'));
+        } catch (error) {
+            throw new Error('The green circle was not dropped:', error.message);
+        }
 
         await action.dragAndDrop(greenCircle, dropTarget).perform();
         await dropTarget.findElement(By.css('.green')).then(() => console.log('Green circle dropped'));
     });
 
-    const path = require('path'); // Import Node.js path module
+    const path = require('path');
 
     it('Upload file', async function () {
         await driver.get('https://practice.expandtesting.com/upload');
 
-        const filePath = path.resolve(__dirname, '../../test-files/test.txt');
+        try {
+            const filePath = path.resolve(__dirname, '../../test-files/tst.txt');
+        } catch {
+            throw new Error('File was not found.')
+        }
 
         const fileInput = await fileUploadPage.fileInput;
         const fileSubmit = await fileUploadPage.fileSubmit;
@@ -71,11 +78,10 @@ describe('Common website elements', function () {
 
     it('Long wait', async function () {
         await driver.get('https://practice.expandtesting.com/slow');
-        const alert = await driver.wait(until.elementLocated(By.css('.alert')), 60000);
-        if (alert) {
-            console.log('Alert is visible');
-        } else {
-            throw new Error('Alert did not appear in time');
+        try {
+            await driver.wait(until.elementLocated(By.css('.alert')), 1000);
+        } catch {
+            throw new Error('The element did not appear on time.')
         }
     });
 
@@ -87,10 +93,10 @@ describe('Common website elements', function () {
         const options = await simpleDropdown.findElements(By.tagName('option'));
         const optionTexts = await Promise.all(options.map(option => option.getText()));
 
-        if (optionTexts.includes('Option 1') && optionTexts.includes('Option 2')) {
+        if (optionTexts.includes('Option 1') && optionTexts.includes('Option 3')) {
             console.log('Dropdown options verified');
         } else {
-            throw new Error('Dropdown options mismatch');
+            throw new Error('Dropdown options was not found.');
         }
 
         await countryDropdown.sendKeys('Slovakia');

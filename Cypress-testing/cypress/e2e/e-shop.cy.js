@@ -12,9 +12,9 @@ describe('Dynamic e-shop test', () => {
 
     before('Visit Website', () => {
         cy.visit('https://practice.expandtesting.com/bookstore')
-        cy.clearCookies(); // Clears all cookies
-        cy.clearLocalStorage(); // Clears local storage
-        cy.clearAllSessionStorage(); // clear session
+        cy.clearCookies();
+        cy.clearLocalStorage();
+        cy.clearAllSessionStorage();
         eShopPage.bookPrice(jSbook)
             .invoke('text')
             .then((text) => {

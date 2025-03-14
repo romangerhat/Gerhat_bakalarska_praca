@@ -65,20 +65,15 @@ module.exports = {
         alwaysMatch: {
           acceptInsecureCerts: true,
           'moz:firefoxOptions': {
-            args: [
-              // '-headless',
-              // '-verbose'
-            ]
+            args: []
           }
         }
       },
       webdriver: {
         start_process: true,
-        server_path: '',
-        cli_args: [
-          // very verbose geckodriver logs
-          // '-vv'
-        ]
+        server_path: 'C:\\Users\\gerha\\WebstormProjects\\Testing\\drivers\\geckodriver.exe',
+        port: 4444,
+        cli_args: []
       }
     },
 
