@@ -1,4 +1,4 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
+const { Builder, By, until } = require('selenium-webdriver');
 const DragAndDropPage = require('../../page-objects/drag-and-drop');
 const FileUploadPage = require('../../page-objects/file-upload');
 const DropDownPage = require('../../page-objects/dropdown');
@@ -28,7 +28,7 @@ describe('Common website elements', function () {
     it('Drag & Drop', async function () {
         await driver.get('https://practice.expandtesting.com/drag-and-drop-circles');
 
-        const { Actions, TouchActions } = require('selenium-webdriver');
+        // const { Actions, TouchActions } = require('selenium-webdriver');
         const redCircle = await dragAndDropPage.redCircle;
         const blueCircle = await dragAndDropPage.blueCircle;
         const greenCircle = await dragAndDropPage.greenCircle;

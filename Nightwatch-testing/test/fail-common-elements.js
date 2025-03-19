@@ -35,7 +35,7 @@ module.exports = {
             browser.execute(function(color) {
                 return document.querySelector('#target').querySelector(`.${color}`) == null; // malo by byt !==
             }, [color], function(result) {
-                browser.assert.ok(result.value, `${color} circle is inside #target`);
+                browser.verify.ok(result.value, `${color} circle is inside #target`);
             });
         }
 
@@ -53,14 +53,15 @@ module.exports = {
     'Long wait': function (browser) {
         browser
             .url('https://practice.expandtesting.com/slow')
-            .waitForElementVisible('.alert', 10000); // kratky cas
+            .verify.visible('.alert', 'Checking if .alert is visible');
+
     },
 
     'Dropdown': function (browser) {
         browser
             .url('https://practice.expandtesting.com/dropdown')
-            .assert.containsText(dropDownPage.elements.simpleDropdown, 'Option 1')
-            .assert.containsText(dropDownPage.elements.simpleDropdown, 'Option 3') // moznost neexistuje
+            .verify.containsText(dropDownPage.elements.simpleDropdown, 'Option 1')
+            .verify.containsText(dropDownPage.elements.simpleDropdown, 'Option 3') // moznost neexistuje
             .setValue(dropDownPage.elements.countryDropdown, 'Slovakia');
     },
 

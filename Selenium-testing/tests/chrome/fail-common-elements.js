@@ -55,7 +55,7 @@ describe('Common website elements', function () {
         await driver.get('https://practice.expandtesting.com/upload');
 
         try {
-            const filePath = path.resolve(__dirname, '../../test-files/tst.txt');
+            const filePath = path.resolve(__dirname, '../../test-files/test.txt');
         } catch {
             throw new Error('File was not found.')
         }
@@ -69,7 +69,7 @@ describe('Common website elements', function () {
         const uploadedFiles = await fileUploadPage.uploadedFiles;
         const filesText = await uploadedFiles.getText();
 
-        if (filesText.includes('test.txt')) {
+        if (filesText.includes('tet.txt')) {
             console.log('File uploaded successfully');
         } else {
             throw new Error('File upload failed');
