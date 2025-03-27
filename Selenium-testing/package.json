@@ -15,7 +15,8 @@
     "common-elements-edge": "npx mocha --timeout 60000 tests/edge/common-elements.js --reporter mochawesome",
     "fail-common-elements-edge": "npx mocha --timeout 60000 tests/edge/fail-common-elements.js --reporter mochawesome",
     "e-shop-edge": "npx mocha --timeout 60000 tests/edge/e-shop.js --reporter mochawesome",
-    "xpath-edge": "npx mocha --timeout 30000 tests/edge/xpath.js --reporter mochawesome"
+    "xpath-edge": "npx mocha --timeout 30000 tests/edge/xpath.js --reporter mochawesome",
+    "chrome": "npx mocha --timeout 30000 tests/chrome/ --reporter mochawesome"
   },
   "keywords": [],
   "author": "",

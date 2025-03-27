@@ -28,7 +28,6 @@ describe('Common website elements', function () {
     it('Drag & Drop', async function () {
         await driver.get('https://practice.expandtesting.com/drag-and-drop-circles');
 
-        // const { Actions, TouchActions } = require('selenium-webdriver');
         const redCircle = await dragAndDropPage.redCircle;
         const blueCircle = await dragAndDropPage.blueCircle;
         const greenCircle = await dragAndDropPage.greenCircle;

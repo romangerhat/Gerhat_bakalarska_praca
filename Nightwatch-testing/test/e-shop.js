@@ -23,17 +23,14 @@ module.exports = {
     },
 
     'Get Book Prices': function (browser) {
-        browser.getText(`[data-testid="price-${books.jSbook}"]`, function (result) {
+        eShopPage.commands.bookPrice(books.jSbook).getText(function (result) {
             jSBookPrice = parseInt(result.value.replace('€', '').trim());
-            console.log("JS Book Price:", jSBookPrice);
         });
         browser.getText(`[data-testid="price-${books.agileBook}"]`, function (result) {
             agileBookPrice = parseInt(result.value.replace('€', '').trim());
-            console.log("Agile Book Price:", agileBookPrice);
         });
         browser.getText(`[data-testid="price-${books.devOpsBook}"]`, function (result) {
             devOpsBookPrice = parseInt(result.value.replace('€', '').trim());
-            console.log("DevOps Book Price:", devOpsBookPrice);
         });
     },
 

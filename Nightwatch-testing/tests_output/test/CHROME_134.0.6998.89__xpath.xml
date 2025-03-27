@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="4">
+
+  <testsuite name="test.xpath" id="test.xpath"
+    errors="0" failures="0" hostname="" id="" package="xpath" skipped="0"
+    tests="4" time="19.27" timestamp="">
+  
+    <testcase name="Drag &amp; Drop" classname="test.xpath" time="0.2040" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Upload file" classname="test.xpath" time="3.646" assertions="0">
+    </testcase>
+  
+    <testcase name="Long wait" classname="test.xpath" time="10.81" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Dropdown" classname="test.xpath" time="1.574" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

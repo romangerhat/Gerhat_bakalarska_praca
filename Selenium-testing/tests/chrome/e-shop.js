@@ -105,7 +105,7 @@ describe('Dynamic e-shop test', function () {
 
         const jsBookElement = await eShopPage.addBookToCart(jSbook);
         await driver.executeScript("arguments[0].scrollIntoView();", jsBookElement);
-        await driver.sleep(2000);
+        await driver.sleep(500);
         await jsBookElement.click();
 
         const shoppingCartBadge5 = await eShopPage.shoppingCartBadge;
@@ -118,6 +118,7 @@ describe('Dynamic e-shop test', function () {
         await eShopPage.shoppingCart.click();
         const shoppingCartBadge6 = await eShopPage.shoppingCartBadge;
         const badgeText6 = await shoppingCartBadge6.getText();
+        await driver.sleep(500);
         if (badgeText6 !== '4') throw new Error('Shopping cart badge does not contain "4"');
 
         const totalPriceText = await eShopPage.totalPrice.getText();

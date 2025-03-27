@@ -10,7 +10,7 @@ module.exports = {
     },
 
     'Drag & Drop': function (browser) {
-        function dragAndDrop(color) {
+       /* function dragAndDrop(color) {
             browser.execute(function(color) {
                 const element = document.querySelector(`.${color}`);
                 const dropTarget = document.querySelector('#target');
@@ -41,7 +41,16 @@ module.exports = {
 
         dragAndDrop('red');
         dragAndDrop('blue');
-        dragAndDrop('green');
+        dragAndDrop('green');*/
+        browser.execute(function() {
+            const element = document.querySelector('.red');
+            const dropTarget = document.querySelector('#target');
+            const dataTransfer = new DataTransfer();
+
+            element.dispatchEvent(new DragEvent('dragstart', { bubbles: true, dataTransfer }));
+            dropTarget.dispatchEvent(new DragEvent('drop', { bubbles: true, dataTransfer }));
+        });
+
     },
 
     'Upload file': function (browser) {

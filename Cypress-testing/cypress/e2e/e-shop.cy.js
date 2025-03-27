@@ -19,19 +19,16 @@ describe('Dynamic e-shop test', () => {
             .invoke('text')
             .then((text) => {
                 jSBookPrice = parseInt(text);
-                console.log("JSbookprice:    " + jSBookPrice);
             });
         eShopPage.bookPrice(agileBook)
             .invoke('text')
             .then((text) => {
                 agileBookPrice = parseInt(text);
-                console.log("agileBookPrice:    " + agileBookPrice);
             });
         eShopPage.bookPrice(devOpsBook)
             .invoke('text')
             .then((text) => {
                 devOpsBookPrice = parseInt(text);
-                console.log("devOpsBook:    " + devOpsBookPrice);
             });
     })
 

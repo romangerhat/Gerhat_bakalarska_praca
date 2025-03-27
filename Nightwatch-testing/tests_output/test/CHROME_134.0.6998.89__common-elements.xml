@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="4">
+
+  <testsuite name="test.common-elements" id="test.common-elements"
+    errors="0" failures="0" hostname="" id="" package="common-elements" skipped="0"
+    tests="4" time="17.57" timestamp="">
+  
+    <testcase name="Drag &amp; Drop" classname="test.common-elements" time="0.1590" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Upload file" classname="test.common-elements" time="1.348" assertions="0">
+    </testcase>
+  
+    <testcase name="Long wait" classname="test.common-elements" time="11.04" assertions="1">
+
+    
+    </testcase>
+  
+    <testcase name="Dropdown" classname="test.common-elements" time="1.803" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>

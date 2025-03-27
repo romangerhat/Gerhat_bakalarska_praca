@@ -97,6 +97,24 @@ module.exports = {
       }
     },
 
+    chrome_default: {
+      desiredCapabilities: {
+        browserName: 'chrome',
+        chromeOptions: {
+          args: [
+          ]
+        }
+      },
+
+      webdriver: {
+        start_process: true,
+        server_path: '',
+        cli_args: [
+          // --verbose
+        ]
+      }
+    },
+
     edge: {
       desiredCapabilities: {
         browserName: 'MicrosoftEdge',

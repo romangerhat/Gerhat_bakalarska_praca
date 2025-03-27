@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="3">
+
+  <testsuite name="test.assertions"
+    errors="0" failures="0" hostname="" id="" package="assertions" skipped="0"
+    tests="3" time="16.03" timestamp="">
+  
+    <testcase name="Should BE assertions" classname="test.assertions" time="0.4650" assertions="8">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Should HAVE assertions" classname="test.assertions" time="1.503" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Should MATCH assertions" classname="test.assertions" time="2.362" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
