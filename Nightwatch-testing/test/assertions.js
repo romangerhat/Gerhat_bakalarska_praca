@@ -41,7 +41,7 @@ module.exports = {
             .assert.cssClassPresent(shouldHavePage.elements.classButton, 'class1')
             .assert.containsText(shouldHavePage.elements.textButton, 'Button 2')
             .assert.cssProperty(shouldHavePage.elements.cssDiv, 'color', 'rgba(0, 0, 0, 1)')
-            .assert.cssProperty(shouldHavePage.elements.cssDiv, 'background-color', 'rgba(77, 148, 255, 1)') // bolo treba zmenit format na rgba
+            .assert.cssProperty(shouldHavePage.elements.cssDiv, 'background-color', 'rgba(77, 148, 255, 1)') // rgba
             .assert.value(shouldHavePage.elements.valueInput, 'first name');
             browser.elements('css selector', '#ul1 li', function(result) {
             browser.assert.equal(result.value.length, 3);

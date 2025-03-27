@@ -1,4 +1,4 @@
-const { Builder } = require('selenium-webdriver');
+const { Builder, By} = require('selenium-webdriver');
 const { Options } = require('selenium-webdriver/edge');
 const ShouldBePage = require('../../page-objects/should-be');
 const ShouldHavePage = require('../../page-objects/should-have');
@@ -95,6 +95,14 @@ describe('Assertions test', function() {
         if (backgroundColor !== 'rgba(77, 148, 255, 1)') {
             throw new Error('The background color of the div is not "rgba(77, 148, 255, 1)"');
         }
+
+        const elements = await driver.findElements(By.css('#ul1 li'));
+        const lengthUl = elements.length;
+
+        if (lengthUl !== 3) {
+            throw new Error(`Expected 3 <li> elements, but found ${lengthUl}`);
+        }
+
 
         const valueInput = await shouldHavePage.valueInput.getAttribute('value');
         if (valueInput !== 'first name') {

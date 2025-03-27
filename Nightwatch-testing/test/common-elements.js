@@ -10,7 +10,7 @@ module.exports = {
     },
 
     'Drag & Drop': function (browser) {
-       /* function dragAndDrop(color) {
+       function dragAndDrop(color) {
             browser.execute(function(color) {
                 const element = document.querySelector(`.${color}`);
                 const dropTarget = document.querySelector('#target');
@@ -31,17 +31,11 @@ module.exports = {
                 });
                 dropTarget.dispatchEvent(dropEvent);
             }, [color]);
-
-            browser.execute(function(color) {
-                return document.querySelector('#target').querySelector(`.${color}`) !== null;
-            }, [color], function(result) {
-                browser.assert.ok(result.value, `${color} circle is inside #target`);
-            });
         }
 
         dragAndDrop('red');
         dragAndDrop('blue');
-        dragAndDrop('green');*/
+        dragAndDrop('green');
         browser.execute(function() {
             const element = document.querySelector('.red');
             const dropTarget = document.querySelector('#target');
@@ -55,7 +49,7 @@ module.exports = {
 
     'Upload file': function (browser) {
         browser.url('https://practice.expandtesting.com/upload')
-        browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('../public/test.txt'))
+        browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('test-files/test.txt'))
         browser.click(fileUploadPage.elements.fileSubmit);
     },
 

@@ -23,7 +23,7 @@ module.exports = {
     },
 
     'Get Book Prices': function (browser) {
-        eShopPage.commands.bookPrice(books.jSbook).getText(function (result) {
+        browser.getText(`[data-testid="price-${books.jSbook}"]`, function (result) {
             jSBookPrice = parseInt(result.value.replace('€', '').trim());
         });
         browser.getText(`[data-testid="price-${books.agileBook}"]`, function (result) {
@@ -69,7 +69,7 @@ module.exports = {
             'input[name="idPro"][value="67410b8c6cb6226060a20da4"] + input[name="cartQty"]',
             '3'
         );
-        browser.click('input[name="idPro"][value="67410b8c6cb6226060a20da4"] ~ button[type="submit"]'); // ulozim zmeny
+        browser.click('input[name="idPro"][value="67410b8c6cb6226060a20da4"] ~ button[type="submit"]');
         browser.assert.containsText(eShopPage.elements.totalPrice, (devOpsBookPrice*3).toString());
         browser.click(eShopPage.elements.bookStore);
     },
@@ -78,12 +78,12 @@ module.exports = {
         browser.execute(function(selector) {
             document.querySelector(selector).click();
         }, [`a[href="/bookstore/add-to-cart/${books.jSbook}"]`]);
-        // browser.expect.element('@shoppingCartBadge').text.to.equal('4');
+        browser.assert.containsText(eShopPage.elements.shoppingCartBadge, '4')
     },
 
     'Check cart and proceed to checkout': function (browser) {
         browser.click(eShopPage.elements.shoppingCart);
-        // browser.expect.element('@shoppingCartBadge').text.to.equal('4');
+        browser.assert.containsText(eShopPage.elements.shoppingCartBadge, '4')
         browser.assert.containsText(eShopPage.elements.totalPrice, parseInt(devOpsBookPrice)*3  + parseInt(jSBookPrice));
         browser.click(eShopPage.elements.checkout);
         browser.waitForElementVisible(eShopPage.elements.emailField);
