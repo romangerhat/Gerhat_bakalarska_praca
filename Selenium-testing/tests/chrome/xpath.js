@@ -17,7 +17,7 @@ describe('Common website elements', function () {
             .setChromeOptions(options)
             .build();
 
-        xpathPage = new XPathPage(driver); // Initialize XPathPage object
+        xpathPage = new XPathPage(driver);
     });
 
     it('Drag & Drop', async function () {
@@ -48,7 +48,7 @@ describe('Common website elements', function () {
     it('Upload file', async function () {
         await driver.get('https://practice.expandtesting.com/upload');
 
-        const filePath = path.resolve(__dirname, '../test-files/test.txt');
+        const filePath = path.resolve(__dirname, '../../test-files/test.txt');
 
         const fileInput = await xpathPage.fileInput;
         const fileSubmit = await xpathPage.fileSubmit;
@@ -83,7 +83,6 @@ describe('Common website elements', function () {
         const simpleDropdown = await xpathPage.simpleDropdown;
         const countryDropdown = await xpathPage.countryDropdown;
 
-        // Check the options for the simple dropdown
         const options = await simpleDropdown.findElements(By.xpath('.//option'));
         const optionTexts = await Promise.all(options.map(option => option.getText()));
 
@@ -93,7 +92,6 @@ describe('Common website elements', function () {
             throw new Error('Dropdown options mismatch');
         }
 
-        // Select a country from the country dropdown
         await countryDropdown.sendKeys('Slovakia');
     });
 

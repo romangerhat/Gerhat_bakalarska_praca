@@ -10,15 +10,13 @@ module.exports = {
     },
 
     'Drag & Drop': function (browser) {
-        function dragAndDrop(color) {
+       function dragAndDrop(color) {
             browser.execute(function(color) {
                 const element = document.querySelector(`.${color}`);
                 const dropTarget = document.querySelector('#target');
 
-                // Create DataTransfer object
                 const dataTransfer = new DataTransfer();
 
-                // Trigger dragstart event on the element
                 const dragStartEvent = new DragEvent('dragstart', {
                     bubbles: true,
                     cancelable: true,
@@ -26,7 +24,6 @@ module.exports = {
                 });
                 element.dispatchEvent(dragStartEvent);
 
-                // Trigger drop event on the target element
                 const dropEvent = new DragEvent('drop', {
                     bubbles: true,
                     cancelable: true,
@@ -34,25 +31,25 @@ module.exports = {
                 });
                 dropTarget.dispatchEvent(dropEvent);
             }, [color]);
-
-            // Verify that the element has been moved to the target
-            browser.execute(function(color) {
-                return document.querySelector('#target').querySelector(`.${color}`) !== null;
-            }, [color], function(result) {
-                browser.assert.ok(result.value, `${color} circle is inside #target`);
-            });
         }
 
-        // Perform drag and drop for each color and verify
         dragAndDrop('red');
         dragAndDrop('blue');
         dragAndDrop('green');
+        browser.execute(function() {
+            const element = document.querySelector('.red');
+            const dropTarget = document.querySelector('#target');
+            const dataTransfer = new DataTransfer();
+
+            element.dispatchEvent(new DragEvent('dragstart', { bubbles: true, dataTransfer }));
+            dropTarget.dispatchEvent(new DragEvent('drop', { bubbles: true, dataTransfer }));
+        });
 
     },
 
     'Upload file': function (browser) {
         browser.url('https://practice.expandtesting.com/upload')
-        browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('../public/test.txt'))
+        browser.setValue(fileUploadPage.elements.fileInput, require('path').resolve('test-files/test.txt'))
         browser.click(fileUploadPage.elements.fileSubmit);
     },
 

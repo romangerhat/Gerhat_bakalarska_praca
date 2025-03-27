@@ -1,4 +1,4 @@
-const { Builder, By, Key, until } = require('selenium-webdriver');
+const { Builder, By, until } = require('selenium-webdriver');
 const DragAndDropPage = require('../../page-objects/drag-and-drop');
 const FileUploadPage = require('../../page-objects/file-upload');
 const DropDownPage = require('../../page-objects/dropdown');
@@ -9,7 +9,6 @@ describe('Common website elements', function () {
     let driver;
     let dragAndDropPage;
     let fileUploadPage;
-    let autoCompletePage;
     let dropDownPage;
 
     before(async function () {
@@ -23,14 +22,12 @@ describe('Common website elements', function () {
             .build();
         dragAndDropPage = new DragAndDropPage(driver);
         fileUploadPage = new FileUploadPage(driver);
-        autoCompletePage = new AutoCompletePage(driver);
         dropDownPage = new DropDownPage(driver);
     });
 
     it('Drag & Drop', async function () {
         await driver.get('https://practice.expandtesting.com/drag-and-drop-circles');
-        // Function to simulate drag and drop using Actions
-        const { Actions, TouchActions } = require('selenium-webdriver');
+
         const redCircle = await dragAndDropPage.redCircle;
         const blueCircle = await dragAndDropPage.blueCircle;
         const greenCircle = await dragAndDropPage.greenCircle;
@@ -38,7 +35,6 @@ describe('Common website elements', function () {
 
         const action = driver.actions({ async: true });
 
-        // Perform drag-and-drop for each circle
         await action.dragAndDrop(redCircle, dropTarget).perform();
         await dropTarget.findElement(By.css('.red')).then(() => console.log('Red circle dropped'));
 
@@ -54,17 +50,14 @@ describe('Common website elements', function () {
     it('Upload file', async function () {
         await driver.get('https://practice.expandtesting.com/upload');
 
-        // Get the absolute path using the relative path
-        const filePath = path.resolve(__dirname, '../test-files/test.txt');  // Adjust path as needed
+        const filePath = path.resolve(__dirname, '../../test-files/test.txt');
 
         const fileInput = await fileUploadPage.fileInput;
         const fileSubmit = await fileUploadPage.fileSubmit;
 
-        // Use sendKeys() with the absolute path
         await fileInput.sendKeys(filePath);
         await fileSubmit.click();
 
-        // Check if the file has been uploaded
         const uploadedFiles = await fileUploadPage.uploadedFiles;
         const filesText = await uploadedFiles.getText();
 
@@ -90,7 +83,6 @@ describe('Common website elements', function () {
         const simpleDropdown = await dropDownPage.simpleDropdown;
         const countryDropdown = await dropDownPage.countryDropdown;
 
-        // Check the options for the simple dropdown
         const options = await simpleDropdown.findElements(By.tagName('option'));
         const optionTexts = await Promise.all(options.map(option => option.getText()));
 
@@ -100,7 +92,6 @@ describe('Common website elements', function () {
             throw new Error('Dropdown options mismatch');
         }
 
-        // Select a country from the country dropdown
         await countryDropdown.sendKeys('Slovakia');
     });
 

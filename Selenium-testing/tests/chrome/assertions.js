@@ -1,4 +1,4 @@
-const { Builder } = require('selenium-webdriver');
+const { Builder, By } = require('selenium-webdriver');
 const chrome = require('selenium-webdriver/chrome');
 const ShouldBePage = require('../../page-objects/should-be');
 const ShouldHavePage = require('../../page-objects/should-have');
@@ -96,10 +96,13 @@ describe('Asserions test', function() {
             throw new Error('The background color of the div is not "rgba(77, 148, 255, 1)"');
         }
 
-        /* const lengthUl = await shouldHavePage.lengthUl.findElements(By.tagName('li')).length; NEFUNGUJE TAKTO
-        if (lengthUl !== 1) {
-            throw new Error('The UL does not have the expected length of 1');
-        } */
+        const elements = await driver.findElements(By.css('#ul1 li'));
+        const lengthUl = elements.length;
+
+        if (lengthUl !== 3) {
+            throw new Error(`Expected 3 <li> elements, but found ${lengthUl}`);
+        }
+
 
         const valueInput = await shouldHavePage.valueInput.getAttribute('value');
         if (valueInput !== 'first name') {

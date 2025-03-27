@@ -7,19 +7,16 @@
     "assertions-chrome": "npx mocha --timeout 10000 tests/chrome/assertions.js --reporter mochawesome",
     "password-chrome": "npx mocha --timeout 10000 tests/chrome/password.js --reporter mochawesome",
     "common-elements-chrome": "npx mocha --timeout 60000 tests/chrome/common-elements.js --reporter mochawesome",
+    "fail-common-elements-chrome": "npx mocha --timeout 60000 tests/chrome/fail-common-elements.js --reporter mochawesome",
     "e-shop-chrome": "npx mocha --timeout 60000 tests/chrome/e-shop.js --reporter mochawesome",
     "xpath-chrome": "npx mocha --timeout 30000 tests/chrome/xpath.js --reporter mochawesome",
-    "assertions-firefox": "npx mocha --timeout 10000 tests/firefox/assertions.js --reporter mochawesome",
-    "password-firefox": "npx mocha --timeout 10000 tests/firefox/password.js --reporter mochawesome",
-    "common-elements-firefox": "npx mocha --timeout 60000 firefox/chrome/common-elements.js --reporter mochawesome",
-    "e-shop-firefox": "npx mocha --timeout 60000 tests/firefox/e-shop.js --reporter mochawesome",
-    "xpath-firefox": "npx mocha --timeout 30000 tests/firefox/xpath.js --reporter mochawesome",
     "assertions-edge": "npx mocha --timeout 10000 tests/edge/assertions.js --reporter mochawesome",
     "password-edge": "npx mocha --timeout 10000 tests/edge/password.js --reporter mochawesome",
     "common-elements-edge": "npx mocha --timeout 60000 tests/edge/common-elements.js --reporter mochawesome",
+    "fail-common-elements-edge": "npx mocha --timeout 60000 tests/edge/fail-common-elements.js --reporter mochawesome",
     "e-shop-edge": "npx mocha --timeout 60000 tests/edge/e-shop.js --reporter mochawesome",
     "xpath-edge": "npx mocha --timeout 30000 tests/edge/xpath.js --reporter mochawesome",
-    "test-firefox": "npx mocha --timeout 30000 tests/firefox/test.js --reporter mochawesome"
+    "chrome": "npx mocha --timeout 30000 tests/chrome/ --reporter mochawesome"
   },
   "keywords": [],
   "author": "",
@@ -27,11 +24,12 @@
   "type": "commonjs",
   "dependencies": {
     "chromedriver": "^134.0.0",
+    "edgedriver": "^6.1.1",
+    "mocha": "^11.1.0",
+    "mochawesome": "^7.1.3",
     "selenium-webdriver": "^4.29.0"
   },
   "devDependencies": {
-    "geckodriver": "^5.0.0",
-    "mocha": "^11.1.0",
-    "mochawesome": "^7.1.3"
+    "geckodriver": "^5.0.0"
   }
 }

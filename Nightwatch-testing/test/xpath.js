@@ -13,10 +13,8 @@ module.exports = {
                 const element = document.querySelector(`.${color}`);
                 const dropTarget = document.querySelector('#target');
 
-                // Create DataTransfer object
                 const dataTransfer = new DataTransfer();
 
-                // Trigger dragstart event on the element
                 const dragStartEvent = new DragEvent('dragstart', {
                     bubbles: true,
                     cancelable: true,
@@ -24,7 +22,6 @@ module.exports = {
                 });
                 element.dispatchEvent(dragStartEvent);
 
-                // Trigger drop event on the target element
                 const dropEvent = new DragEvent('drop', {
                     bubbles: true,
                     cancelable: true,
@@ -33,7 +30,6 @@ module.exports = {
                 dropTarget.dispatchEvent(dropEvent);
             }, [color]);
 
-            // Verify that the element has been moved to the target
             browser.execute(function(color) {
                 return document.querySelector('#target').querySelector(`.${color}`) !== null;
             }, [color], function(result) {
@@ -41,7 +37,6 @@ module.exports = {
             });
         }
 
-        // Perform drag and drop for each color and verify
         dragAndDrop('red');
         dragAndDrop('blue');
         dragAndDrop('green');
@@ -66,7 +61,6 @@ module.exports = {
         browser.assert.containsText(xPathPage.elements.simpleDropdown, 'Option 2');
         browser.setValue(xPathPage.elements.countryDropdown, 'Slovakia');
     },
-
 
     after: function (browser) {
         browser.end();

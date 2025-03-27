@@ -10,7 +10,7 @@ module.exports = {
         inputField: '//*[@id="country"]',
         submit: '/html/body/main/div[3]/div/div[1]/div/div/div[2]/button',
         result: '//*[@id="result"]',
-        simpleDropdown: 'xpath://*[@id="dropdown"]',
-        countryDropdown: 'xpath://*[@id="country"]',
+        simpleDropdown: '//*[@id="dropdown"]',
+        countryDropdown: '//*[@id="country"]',
     },
 };

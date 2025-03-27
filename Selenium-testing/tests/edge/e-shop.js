@@ -1,7 +1,8 @@
 const { Builder } = require('selenium-webdriver');
 const EShopPage = require('../../page-objects/e-shop');
 const chrome = require('selenium-webdriver/chrome');
-require('chromedriver');
+require('edgedriver');
+const {Options} = require("selenium-webdriver/edge");
 
 describe('Dynamic e-shop test', function () {
     let driver;
@@ -14,13 +15,13 @@ describe('Dynamic e-shop test', function () {
     let devOpsBookPrice = 0;
 
     before(async function () {
-        let options = new chrome.Options();
-        options.addArguments('--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data');
+        let options = new Options();
+        options.addArguments('--user-data-dir=C:\\Users\\gerha\\AppData\\Local\\Microsoft\\Edge\\User Data');
         options.addArguments('--profile-directory=Default');
 
         driver = await new Builder()
-            .forBrowser('chrome')
-            .setChromeOptions(options)
+            .forBrowser('MicrosoftEdge')
+            .setEdgeOptions(options)
             .build();
         eShopPage = new EShopPage(driver);
 

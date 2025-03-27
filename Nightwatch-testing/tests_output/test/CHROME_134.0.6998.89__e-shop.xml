@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="1">
+
+  <testsuite name="test.e-shop" id="test.e-shop"
+    errors="0" failures="1" hostname="" id="" package="e-shop" skipped="4"
+    tests="1" time="2.619" timestamp="">
+  
+    <testcase name="Get Book Prices" classname="test.e-shop" time="0.06000" assertions="1">  <failure message="Cannot read properties of undefined (reading &#39;elementIdQuery&#39;)">TypeError: Cannot read properties of undefined (reading &#39;elementIdQuery&#39;)
+    at Object.bookPrice (C:\Users\gerha\WebstormProjects\Testing\Nightwatch-testing\nightwatch\page-objects\e-shop.js:20:29)
+    at Get Book Prices (C:\Users\gerha\WebstormProjects\Testing\Nightwatch-testing\test\e-shop.js:26:19)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+    
+    <testcase
+      name="Search books and add them to the cart" classname="test.e-shop">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Shopping cart actions" classname="test.e-shop">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Return to store and add more books to the cart" classname="test.e-shop">
+      <skipped />
+    </testcase>
+    
+    <testcase
+      name="Check cart and proceed to checkout" classname="test.e-shop">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>

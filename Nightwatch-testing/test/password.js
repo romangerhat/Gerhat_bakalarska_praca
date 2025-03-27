@@ -1,32 +1,29 @@
-const passwords = require('../../public/passwords.json');
-const passwordPage = require('../nightwatch/page-objects/password');
+describe('Common website elements', function () {
+    let passwordPage;
+    const passwords = require('../../public/passwords.json');
 
-module.exports = {
-    '@tags': ['password-validator'],
-
-    before(browser) {
+    before(browser => {
+        passwordPage = browser.page.password();
         browser.url('https://practice.expandtesting.com/secure-password-checker');
-    },
+    });
 
-    'Password Validator': function (browser) {
-        const passwordPage = browser.page.password();
+    it('Password validator', function (browser) {
         const passwordKeys = Object.keys(passwords);
-        browser.pause(600000);
 
-        passwordKeys.forEach((key) => {
+        passwordKeys.forEach(key => {
             const { value, validatorsActive, validatorsNonActive } = passwords[key];
 
             passwordPage.clearValue('@passwordField').setValue('@passwordField', value);
 
-            validatorsActive.forEach((validator) => {
+            validatorsActive.forEach(validator => {
                 passwordPage.expect.element(`@${validator}`).to.be.visible;
             });
 
-            validatorsNonActive.forEach((validator) => {
+            validatorsNonActive.forEach(validator => {
                 passwordPage.expect.element(`@${validator}`).to.not.be.visible;
             });
         });
 
         browser.end();
-    }
-};
+    });
+});

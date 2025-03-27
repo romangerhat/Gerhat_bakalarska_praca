@@ -1,7 +1,7 @@
 const shouldBePage = require('../nightwatch/page-objects/should-be');
 const shouldHavePage = require('../nightwatch/page-objects/should-have');
 const shouldMatchPage = require('../nightwatch/page-objects/should-match');
-// TODO: SKORO HOTOVO
+
 module.exports = {
     before: function (browser) {
         browser
@@ -15,7 +15,6 @@ module.exports = {
             .assert.visible(shouldBePage.elements.visibleButton)
             .assert.not.visible(shouldBePage.elements.invisibleButton)
 
-            // Check if checkboxes are checked or not
             .getAttribute(shouldBePage.elements.checkedBox, 'checked', function(result) {
                 this.assert.equal(result.value, 'true');
             })
@@ -23,7 +22,6 @@ module.exports = {
                 this.assert.notEqual(result.value, 'true');
             })
 
-            // Check if divs are empty or not
             .getText(shouldBePage.elements.emptyDiv, function(result) {
                 this.assert.equal(result.value, '');
             })
@@ -43,10 +41,12 @@ module.exports = {
             .assert.cssClassPresent(shouldHavePage.elements.classButton, 'class1')
             .assert.containsText(shouldHavePage.elements.textButton, 'Button 2')
             .assert.cssProperty(shouldHavePage.elements.cssDiv, 'color', 'rgba(0, 0, 0, 1)')
-            .assert.cssProperty(shouldHavePage.elements.cssDiv, 'background-color', 'rgba(77, 148, 255, 1)') // bolo treba zmenit format na rgba
-
-            // .assert.elementCount(shouldHavePage.elements.lengthUl, 1) Element count neexistuje
+            .assert.cssProperty(shouldHavePage.elements.cssDiv, 'background-color', 'rgba(77, 148, 255, 1)') // rgba
             .assert.value(shouldHavePage.elements.valueInput, 'first name');
+            browser.elements('css selector', '#ul1 li', function(result) {
+            browser.assert.equal(result.value.length, 3);
+        });
+
     },
 
     'Should MATCH assertions': function (browser) {

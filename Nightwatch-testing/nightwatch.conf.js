@@ -65,20 +65,15 @@ module.exports = {
         alwaysMatch: {
           acceptInsecureCerts: true,
           'moz:firefoxOptions': {
-            args: [
-              // '-headless',
-              // '-verbose'
-            ]
+            args: []
           }
         }
       },
       webdriver: {
         start_process: true,
-        server_path: '',
-        cli_args: [
-          // very verbose geckodriver logs
-          // '-vv'
-        ]
+        server_path: 'C:\\Users\\gerha\\WebstormProjects\\Testing\\drivers\\geckodriver.exe',
+        port: 4444,
+        cli_args: []
       }
     },
 
@@ -89,6 +84,24 @@ module.exports = {
           args: [
             '--user-data-dir=C:/Users/gerha/AppData/Local/Google/Chrome/User Data',
             '--profile-directory=Default'
+          ]
+        }
+      },
+
+      webdriver: {
+        start_process: true,
+        server_path: '',
+        cli_args: [
+          // --verbose
+        ]
+      }
+    },
+
+    chrome_default: {
+      desiredCapabilities: {
+        browserName: 'chrome',
+        chromeOptions: {
+          args: [
           ]
         }
       },

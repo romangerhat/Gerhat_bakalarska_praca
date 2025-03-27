@@ -4,9 +4,9 @@ import DropDownPage from "../page-objects/dropdown";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes('Assignment to constant variable')) {
-        return false;  // Prevent the test from failing
+        return false;
     }
-    return true;  // Let Cypress handle other errors
+    return true;
 });
 
 describe('Common website elements', () => {
@@ -24,7 +24,7 @@ describe('Common website elements', () => {
         dragAndDropPage.dropTarget.trigger('drop', { dataTransfer });
 
         dragAndDropPage.dropTarget.within(() => {
-            dragAndDropPage.redCircle.should('exist'); // neviem ci funguje spravne
+            dragAndDropPage.redCircle.should('exist');
         });
 
         dragAndDropPage.blueCircle.trigger('dragstart', { dataTransfer });

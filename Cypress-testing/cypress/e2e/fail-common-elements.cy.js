@@ -4,14 +4,14 @@ import DropDownPage from "../page-objects/dropdown";
 
 Cypress.on('uncaught:exception', (err, runnable) => {
     if (err.message.includes('Assignment to constant variable')) {
-        return false;  // Prevent the test from failing
+        return false;
     }
-    return true;  // Let Cypress handle other errors
+    return true;
 });
 
 describe('Common website elements', () => {
     const dragAndDropPage = new DragAndDropPage();
-    const dataTransfer = new DataTransfer(); // musim pouzit datatransfer
+    const dataTransfer = new DataTransfer();
     const fileUploadPage = new FileUploadPage();
     const dropDownPage = new DropDownPage();
 

@@ -1,10 +1,11 @@
-const { Builder } = require('selenium-webdriver');
-const edge = require('selenium-webdriver/edge');
+const { Builder, By} = require('selenium-webdriver');
+const { Options } = require('selenium-webdriver/edge');
 const ShouldBePage = require('../../page-objects/should-be');
 const ShouldHavePage = require('../../page-objects/should-have');
 const ShouldMatchPage = require('../../page-objects/should-match');
+require('edgedriver');
 
-describe('Assertions test - Edge (With AdBlock Extension)', function () {
+describe('Assertions test', function() {
     this.timeout(10000);
 
     let driver;
@@ -12,17 +13,15 @@ describe('Assertions test - Edge (With AdBlock Extension)', function () {
     let shouldHavePage;
     let shouldMatchPage;
 
-    before(async function () {
-        let options = new edge.Options();
+    before(async function() {
+        let options = new Options();
+        options.addArguments('--user-data-dir=C:\\Users\\gerha\\AppData\\Local\\Microsoft\\Edge\\User Data');
+        options.addArguments('--profile-directory=Default');
 
-        // Set Edge to use your existing profile (optional)
-        options.addArguments('--user-data-dir=C:/Users/Roman Gerhát/AppData/Local/Microsoft/Edge/User Data');
-        options.addArguments('--profile-directory=Profile 2'); // Adjust if using a different profile
-
-        // Add the path to the AdBlock extension
-        // options.addExtensions('C:/Users/gerha/AppData/Local/Microsoft/Edge/User Data/Default/Extensions/gmgoamodcdcjnbaobigkjelfplakmdhh');
-
-        driver = await new Builder().forBrowser('MicrosoftEdge').setEdgeOptions(options).build();
+        driver = await new Builder()
+            .forBrowser('MicrosoftEdge')
+            .setEdgeOptions(options)
+            .build();
 
         shouldBePage = new ShouldBePage(driver);
         shouldHavePage = new ShouldHavePage(driver);
@@ -97,10 +96,13 @@ describe('Assertions test - Edge (With AdBlock Extension)', function () {
             throw new Error('The background color of the div is not "rgba(77, 148, 255, 1)"');
         }
 
-        /* const lengthUl = await shouldHavePage.lengthUl.findElements(By.tagName('li')).length; NEFUNGUJE TAKTO
-        if (lengthUl !== 1) {
-            throw new Error('The UL does not have the expected length of 1');
-        } */
+        const elements = await driver.findElements(By.css('#ul1 li'));
+        const lengthUl = elements.length;
+
+        if (lengthUl !== 3) {
+            throw new Error(`Expected 3 <li> elements, but found ${lengthUl}`);
+        }
+
 
         const valueInput = await shouldHavePage.valueInput.getAttribute('value');
         if (valueInput !== 'first name') {
